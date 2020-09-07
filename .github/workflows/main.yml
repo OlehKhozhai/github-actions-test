@@ -16,5 +16,9 @@ jobs:
 
         - run: yarn build
         - uses: w9jds/firebase-action@master
+          with:
+            args: deploy --only githubActionsVolocuga	
+          env:
+            FIREBASE_TOKEN:${{ secret.FIREBASE_TOKEN }}
 
 
