@@ -3,6 +3,8 @@ name: CI
 on:
   pull_request:
     branches: [master]
+  push:
+    branches: [master]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,8 +13,9 @@ jobs:
       - uses: actions/setup-node@master
         with:
         node-version: 12
-      - run: yarn build
+      - run: yarn run build
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only githubActionsVolocuga
-        env: FIREBASE_TOKEN:${{ secret.FIREBASE_TOKEN }}
+        env:
+          FIREBASE_TOKEN: ${{ secret.FIREBASE_TOKEN }}
