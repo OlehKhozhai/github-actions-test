@@ -13,13 +13,11 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: 12
-      - run: yarn
-      - run: yarn build1
-      - uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:[olocuga]
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+     - run: |
+          yarn
+          yarn build1
+          yarn firebase deploy --only hosting -P olocuga --token ${{ secrets.FIREBASE_TOKEN }}
+ 
   deploy2:
     runs-on: ubuntu-latest
     steps:
@@ -27,10 +25,7 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: 12
-      - run: yarn
-      - run: yarn build2
-      - uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:[volocuga]
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - run: |
+          yarn
+          yarn build2
+          yarn firebase deploy --only hosting -P volocuga --token ${{ secrets.FIREBASE_TOKEN }}
