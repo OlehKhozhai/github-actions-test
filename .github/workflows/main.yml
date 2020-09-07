@@ -15,7 +15,8 @@ jobs:
           node-version: 12
       - run: yarn
       - run: yarn build1
-      - run: yarn firebase deploy --only hosting -P olocuga --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: firebase use github-actions-olocuga --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: yarn firebase deploy --only hosting:olocuga --non-interactive --token ${{ secrets.FIREBASE_TOKEN }} -m"olocuga"
 
   deploy2:
     runs-on: ubuntu-latest
@@ -26,4 +27,5 @@ jobs:
           node-version: 12
       - run: yarn
       - run: yarn build2
-      - run: yarn firebase deploy --only hosting -P volocuga --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: firebase use github-actions-olocuga --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: yarn firebase deploy --only hosting:volocuga --non-interactive --token ${{ secrets.FIREBASE_TOKEN }} -m"volocuga"
