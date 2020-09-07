@@ -6,7 +6,7 @@ on:
   push:
     branches: [master]
 jobs:
-  deploy:
+  deploy1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -17,6 +17,20 @@ jobs:
       - run: yarn build
       - uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting:[github-actions-olocuga]
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  deploy2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - run: yarn
+      - run: yarn build
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:[github-actions-volocuga]
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

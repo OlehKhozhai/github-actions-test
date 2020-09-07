@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "github-actions-olocuga"
+  },
+    "targets": {
+    "github-actions-olocuga": {
+      "hosting": {
+        "github-actions-olocuga": [
+          "github-actions-olocuga"
+        ],
+        "github-actions-volocuga": [
+          "github-actions-volocuga"
+        ],
+      }
+    }
   }
 }
